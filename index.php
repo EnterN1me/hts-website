@@ -3,6 +3,9 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="icon" href="https://hightech-service.fr/wp-content/uploads/2021/01/cropped-logo-32x32.png" sizes="32x32">
 <title>Tarif Reparation</title>
+<!-- Page de recherche de tarifs pour réparation HighTech-Services
+@author Mickael GUERCHON
+-->
 <style type="text/css">
     html, body {
         font-family: Arial, Helvetica, sans-serif;
@@ -26,6 +29,7 @@
 		font-size: 4.5rem;
 		line-height: 1.2em; 
 		text-align:center ;
+		box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 	}
 	
 	img{
@@ -73,7 +77,7 @@
 	}
 
     .text {
-	padding-top: 5%;
+	padding-top: 4%;
 	font-size: 250%
     }
 	
@@ -216,7 +220,7 @@ else{
 				?>
 			</select></div>
 			
-			<div><p>Modele </p>
+			<div><p>Modèle </p>
 			<select name="modele" id="modele" onchange="document.getElementById('form').submit()">
 				<option> --selectionnez le modele ici--</option>
 				<?php foreach ($modeles as $modele){
@@ -228,7 +232,7 @@ else{
 				?>
 			</select></div>
 			
-			<div><p>Reparation</p><select name="reparation" id="reparation" onchange="document.getElementById('form').submit()">
+			<div><p>Réparation</p><select name="reparation" id="reparation" onchange="document.getElementById('form').submit()">
 				<option> --selectionnez la reparation ici--</option>
 				<?php foreach ($reparations as $reparation){
 					$result = "<option value='$reparation' ";
@@ -249,8 +253,8 @@ $result_prix = mysqli_query($con,$sql_prix);
 $row = $result_prix->fetch_assoc();
 $prix = $row['prix'];
 
-if($prix) echo "la reparation vous coutera ".$prix." € HT (hors transport)" ; ?></p>
-</div>	
+if($prix) echo "la réparation vous coutera ".$prix." € HT (hors transport)" ; ?></p>
+</div>		
 
 </body>
 </html>
