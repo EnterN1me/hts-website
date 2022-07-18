@@ -250,10 +250,7 @@ $row = $result_prix->fetch_assoc();
 $prix = $row['prix'];
 
 if($prix) echo "la reparation vous coutera ".$prix." € HT (hors transport)" ; ?></p>
-</div>
-
-<p class='maj'> dernière mise à jour le 18/07/2022 </p>
-		
+</div>	
 
 </body>
 </html>
