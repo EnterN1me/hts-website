@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <head lang="fr">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="icon" href="https://hightech-service.fr/wp-content/uploads/2021/01/cropped-logo-32x32.png" sizes="32x32">
-<title>Tarif Reparation</title>
 <!-- Page de recherche de tarifs pour réparation HighTech-Services
 @author Mickael GUERCHON
 -->
+<title>Tarif Reparation</title>
+<!--lien icon-->
+<link rel="icon" href="https://hightech-service.fr/wp-content/uploads/2021/01/cropped-logo-32x32.png" sizes="32x32">
+
+
 <style type="text/css">
     html, body {
         font-family: Arial, Helvetica, sans-serif;
         font-size: .9em;
 		heigh: 100%;
-        color: #000000;
         background: #DDDDDD;   
     }
 	
@@ -56,18 +58,6 @@
 		font-size: 20px;
 		box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 	}
-	
-    sup a {
-        text-decoration: none;
-    }
-
-    hr {
-        margin-left: 90px;
-        height: 1px;
-        color: #000000;
-        background-color: #000000;
-        border: none;
-    }
 	
 	p {
 		margin-bottom:10px;
@@ -121,7 +111,7 @@ else {$reparation_select="";}
 ?>
 
 <?php 
-$con = new mysqli('localhost:3306','root','root','biblio');
+$con = new mysqli('localhost','id','pwd','BtoB');
 
 if ($con->connect_error){
 	die('Erreur : '.$con->connect_error);
@@ -139,7 +129,7 @@ if ($result_type) {
 	$types = array_unique($types);
 }
 else{
-	echo "0 resultats";
+	echo "0 resultat type (probleme base de donnees); ";
 }
 
 
@@ -157,7 +147,7 @@ if ($result_marque) {
 	$marques = array_unique($marques);
 }
 else{
-	echo "0 resultats";
+	echo "0 resultat marque; ";
 }
 
 $condition = "";
@@ -174,7 +164,7 @@ if ($result_modele) {
 	$modeles = array_unique($modeles);
 }
 else{
-	echo "0 resultats";
+	echo "0 resultat modele; ";
 }
 
 $condition = "";
@@ -191,11 +181,11 @@ if ($result_reparation) {
 	$reparations = array_unique($reparations);
 }
 else{
-	echo "0 resultats";
+	echo "0 resultat reparation; ";
 }
 ?>
 
-<form action="index.php" method="post" id="form"> 
+<form action="BtoB.php" method="post" id="form"> 
 			<div><p>Type d'appareil</p>
 			<select name="type" id="type" onchange="document.getElementById('form').submit()">
 				<option> --selectionnez le type ici--</option>
@@ -246,7 +236,7 @@ else{
             
          </form>
 
-<div class='text'>		 
+<div class='text' name='entern1me'>		 
 <p><?php	
 $sql_prix = "SELECT prix FROM tarifs WHERE modele = '$modele_select' AND reparation = '$reparation_select' AND type='$type_select' AND marque='$marque_select' ";
 $result_prix = mysqli_query($con,$sql_prix);
